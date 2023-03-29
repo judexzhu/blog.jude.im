@@ -1,0 +1,5 @@
+baseURL = 'https://blog.jude.im/'
+languageCode = 'en-us'
+title = 'In Medias Res'
+theme = 'holy'
+copyright = "Copyright © 2023 Jude Blog"
