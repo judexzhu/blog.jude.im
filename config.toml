@@ -1,5 +1,65 @@
 baseURL = 'https://blog.jude.im/'
 languageCode = 'en-us'
 title = 'In Medias Res'
-theme = 'holy'
+theme = 'hello-friend-ng'
+paginate     = '10'
 copyright = "Copyright © 2023 Jude Blog"
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Subtitle for home
+  homeSubtitle = "A simple blog for Kubernetes and Openshift"
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  disableReadOtherPosts = false
+
+  # Enable sharing buttons, if you like
+  enableSharingButtons = true
+  
+  # Show a global language switcher in the navigation bar
+  enableGlobalLanguageMenu = true
+
+  # Metadata mostly used in document's head
+  description = "My new homepage or blog"
+  keywords = "homepage, blog"
+  images = [""]
+
+[taxonomies]
+    category = "blog"
+    tag      = "tags"
+    series   = "series"
+
+[languages]
+  [languages.en]
+    title = "In Medias Res"
+    
+    
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+    
+    [languages.en.params]
+      keywords = ""
+      readOtherPosts = "Read other posts"
+      subtitle = 'A simple blog for Kubernetes and Openshift'
+
+    [languages.en.params.logo]
+      logoText = "hello I'm Jude Zhu ..."
+      logoHomeLink = "/"
+
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+  # And you can even create generic menu
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"
+  [[menu.main]]
+    identifier = "tags"
+    name       = "Tags"
+    url        = "/tags"
