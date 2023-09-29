@@ -1,5 +1,5 @@
 ---
-title: "In Istio How Gateway, VirtualService and DestinationRule Work Together"
+title: "How Gateway, VirtualService and DestinationRule Work Together"
 date: 2023-09-29
 draft: false
 categories: ['istio']
