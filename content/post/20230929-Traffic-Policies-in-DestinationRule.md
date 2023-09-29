@@ -54,7 +54,7 @@ The `TrafficPolicy` in Istio's `DestinationRule` is used to configure traffic be
    - Defines the default traffic policy for the destination.
    - Can be overridden by port-level settings.
 
-### Example:
+### Example Explaination:
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
@@ -79,5 +79,33 @@ spec:
 ```
 
 This example configures a `DestinationRule` with a round-robin load balancer, connection pool settings, outlier detection settings, and simple TLS mode for connections to `my-service`.
+
+Below is a detailed explanation of each field in the provided `trafficPolicy` configuration from above example:
+
+#### 1. **LoadBalancer**
+   - **Simple: ROUND_ROBIN**
+     - `ROUND_ROBIN`: Each healthy upstream host is selected in sequence, distributing incoming requests evenly across the group of servers.
+
+#### 2. **ConnectionPool**
+   - **Http:**
+     - **Http1MaxPendingRequests: 100**
+       - This field sets the maximum number of pending HTTP requests to a destination. If exceeded, new requests will be denied.
+     - **MaxRequestsPerConnection: 10**
+       - This field sets the maximum number of requests per connection to a backend. When this number is reached, the connection is closed.
+
+#### 3. **OutlierDetection**
+   - **ConsecutiveErrors: 5**
+     - This field sets the number of consecutive 5xx errors before considering an upstream host as an outlier and ejecting it from the healthy backend pool.
+   - **Interval: 5m**
+     - This field specifies the time interval between ejection sweep analysis, meaning Istio checks whether any host should be ejected every 5 minutes.
+   - **BaseEjectionTime: 15m**
+     - This field sets the minimum amount of time a host is ejected. It is calculated as `baseEjectionTime * (2 ^ num_ejections)`.
+   - **MaxEjectionPercent: 50**
+     - This field sets the maximum percentage of hosts that can be ejected from the load balancing pool. Here, at most 50% of hosts can be ejected.
+
+#### 4. **TLS**
+   - **Mode: SIMPLE**
+     - This field specifies the TLS mode used when communicating with the upstream service.
+     - `SIMPLE`: TLS is used, but with no client certificate for mutual TLS.
 
 For more detailed information and examples, you can refer to the [official Istio documentation](https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy).
